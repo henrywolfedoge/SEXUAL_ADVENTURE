@@ -52,6 +52,7 @@ void femalestory() {
 			<< "It's awesome to say the least." << endl
 			<< "It almost doesn't feel real." << endl
 			<< "He explains how his parents are out of town and he want to take you back to his." << endl;
+		
 		cout << endl << "Do you take up his offer?" << endl << "Yes/No" << endl;
 		do {
 			femaleunder18choice2:
@@ -75,10 +76,50 @@ void femalestory() {
 		}
 		else if (responce == "yes") {
 			system("cls");
-			cout << "You follow him to his place." << endl
-				<< "It's decent." << endl
-				<< "You make your way to his room." << endl
-				<< "END OF STORY SO FAR" << endl;
+			cout << "You follow him to his place it doesnt look to shabby." << endl
+				<< "You make your way to his room andyou both immediately begin undressing." << endl
+				<< "He throws your naked body on his bed and leaps onto you then asks \"Are you on the pill?\"" << endl
+				<< "You're not but you want to keep the train rolling and not ruin the mood." << endl;
+			
+			cout <<endl << "Do you tell him you're on the pill even though you're not?" << endl << "Yes/No" << endl;
+			do {
+				femaleunder18choice3:
+				cin >> responce;
+				if (responce == "yes" || responce == "no") {
+					invalidresponce = 1;
+				}
+				else
+				{
+					cerr << "Error, Please enter a valid responce" << endl;
+					goto femaleunder18choice3;
+				}
+			} while (invalidresponce = 0);
+			if (responce == "no") {
+				system("cls");
+				cout << "\"That's all right,\" he says reaching into the top draw of his bedside table and pulling out a condom." << endl
+					<< "\"good thing I have a few handy\"" << endl
+					<< "He doesn't say anything while he puts it on." << endl
+					<< "As soon as he's done he spreads your legs and thrusts his meaty schlong into you." << endl
+					<< "A few munites past and he finishes into you." << endl
+					<< "Lucky you told the truth!" << endl
+					<< "Long story short: You cuddle, You leave, You get home and go to bed." << endl
+					<< "He messages you a few times over the next few weeks." << endl
+					<< "I guess he thinks you're his booty-call now but you still sleep with him when you're feeling unnatractive." << endl
+					<< "Over time you both lose contact and in a sense, you're ok with what it was because it was good while it lasted." << endl;
+				//END OF STORY
+			}
+			else if (responce == "yes")
+			{
+				system("cls");
+				cout << "He doesn't say anything but instead spreads your legs and thrusts his meaty schlong into you." << endl
+					<< "A few munites past and he finishes into you." << endl
+					<< "FUCK!" << endl
+					<< "What a wise idea that was on your part." << endl
+					<< "Long story short: You cuddle, You leave, You sneak back to bed." << endl
+					<< "The next morning while getting ready for class you decide that on your way home you'll stop by the store and buy a morning after pill." << endl
+					<< "It's a long shot seeing as thier more effective the sooner you take them, but this is your only option at the moment." << endl
+					<< "You pray this works otherwise you're in BIG TROUBLE!!!" << endl;
+			}
 		}
 		/* dont cross
 		_______________________________________________________________________*/
@@ -110,6 +151,7 @@ void storychoice() {
 			<< "Now!"<<endl
 			<< "Its 11:45pm, your parents have been asleep for a while now, and you're sure that you can get out of your window with no worriers."<<endl
 			<< "But, you've got to get up early tomorrow to get to class on time." << endl;
+		
 		cout << endl << "Should you sneak out and fuck this hottie?" << endl << "Yes/No" << endl;
 		do {
 		redochoice1:
