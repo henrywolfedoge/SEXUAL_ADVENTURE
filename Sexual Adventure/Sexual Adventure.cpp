@@ -264,7 +264,7 @@ redoinput:
 	}
 	else if (responce == "help") {
 		system("cls");
-		cout << endl << "Help" << endl << "To avoid going into a infinite loop enter ONLY a NUMBER when asked age" << endl
+		cout << "Help" << endl << endl << "To avoid going into a infinite loop enter ONLY a NUMBER when asked age" << endl
 			<< "I don't care about P.C. only MALE AND FEMALE are avalible" << endl
 			<< "Achievements are recived when certain choices have been made...Both the Good and the Bad" << endl;
 		goto back;
