@@ -142,7 +142,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Text Include="List of achievements.txt" />
     <Text Include="ReadMe.txt" />
+    <Text Include="SaveData.txt" />
+    <Text Include="Sexual Adventure Script.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
