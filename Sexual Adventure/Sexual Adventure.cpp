@@ -276,9 +276,25 @@ redoinput:
 	}
 	else if (responce == "save") {
 		system("cls");
-		save();
-		cout << "Data has been saved" << endl;
-		goto back;
+		cout << "Are you sure you want to save?" << endl << "Yes/No" << endl;
+		do {
+			cin >> responce;
+			if (responce == "yes" || responce == "no") {
+				invalidresponce = 1;
+			}
+			else {
+				cerr << "Error, Please enter a valid responce" << endl;
+				goto redoinput;
+			}
+		} while (invalidresponce = 0);
+		if (responce == "yes") {
+			save();
+			cout << "Data has been saved" << endl;
+			goto back;
+		}
+		else if (responce == "no") {
+			goto back;
+		}
 	}
 	else if (responce == "load") {
 		system("cls");
