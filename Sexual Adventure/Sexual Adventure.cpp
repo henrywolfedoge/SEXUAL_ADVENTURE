@@ -191,7 +191,6 @@ void storychoice() {
 void Start() {
 	madewrongchoice:
 	system("cls");
-	cout << "SEXUAL ADVENTURE" << " " << version << endl;
 	//enter name
 	cout << "Please enter your name" << endl;
 	cin >> name;
@@ -245,13 +244,29 @@ invalidage:
 	}
 }
 void main_menu() {
+	startscreen:
+	cout << "SEXUAL ADVENTURE" << " " << version << endl << "TYPE START" << endl;
+	do {
+		redostart:
+		cin >> responce;
+		if (responce == "start") {
+			invalidresponce = 1;
+		}
+		else {
+			cerr << "Error, Please enter a valid responce" << endl;
+			goto redostart;
+		}
+	} while (invalidresponce = 0);
+	if (responce == "start") {
+	}
 menu:
-	cout << "Enter text from the avalible options in lowercase to play" << endl << version << endl;
-	cout << "Play" << endl << "Credits" << endl << "Achievements" << endl << "Save" << endl << "Load" << endl << "Help" << endl << "Close" << endl;
+	system("cls");
+	cout << "SEXUAL ADVENTURE" << " " << version << endl;
+	cout << "Play" << endl << "Credits" << endl << "Achievements" << endl << "Save" << endl << "Load" << endl << "Help" << endl << "Exit" << endl;
 redoinput:
 	do {
 		cin >> responce;
-		if (responce == "play" || responce == "credits" || responce == "achievements" || responce == "save" || responce == "load" || responce == "help" || responce == "close") {
+		if (responce == "play" || responce == "credits" || responce == "achievements" || responce == "save" || responce == "load" || responce == "help" || responce == "exit") {
 			invalidresponce = 1;
 		}
 		else {
@@ -276,9 +291,25 @@ redoinput:
 	}
 	else if (responce == "save") {
 		system("cls");
-		save();
-		cout << "Data has been saved" << endl;
-		goto back;
+		cout << "Are you sure you want to save?" << endl << "Yes/No" << endl;
+		do {
+			cin >> responce;
+			if (responce == "yes" || responce == "no") {
+				invalidresponce = 1;
+			}
+			else {
+				cerr << "Error, Please enter a valid responce" << endl;
+				goto redoinput;
+			}
+		} while (invalidresponce = 0);
+		if (responce == "yes") {
+			save();
+			cout << "Data has been saved" << endl;
+			goto back;
+		}
+		else if (responce == "no") {
+			goto back;
+		}
 	}
 	else if (responce == "load") {
 		system("cls");
@@ -291,10 +322,27 @@ redoinput:
 		cout << endl << "Coding: Leighton Scheer" << endl << "Story: Laura Holmes" << endl << "Testing: Chiss Bennett" << endl;
 		goto back;
 	}
-	else if (responce == "close") {
-		system("cls");
-		cout << "Please wait while the program closes" << endl;
-		exit(0);
+	else if (responce == "exit") {
+		cout << "Do you close game or go back to start screen?" << endl << "Exit/Start" << endl;
+		do {
+			redoexit:
+			cin >> responce;
+			if (responce == "exit" || responce == "start") {
+				invalidresponce = 1;
+			}
+			else {
+				cerr << "Error, Please enter a valid responce" << endl;
+				goto redoexit;
+			}
+		} while (invalidresponce = 0);
+		if (responce == "start") {
+			goto startscreen;
+		}
+		else if (responce == "exit") {
+			system("cls");
+			cout << "Please wait while the program closes" << endl;
+			exit(0);
+		}
 	}
 	cout << "END OF STORY";
 	//return to main menu
