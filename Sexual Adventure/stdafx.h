@@ -4,16 +4,16 @@
 //
 
 #pragma once
-//all headers used
 #include "targetver.h"
 #include <fstream>
-#include <iostream>
-#include <string>
-#include <ctime>
-#include <cstdlib>
 #include <stdio.h>
 #include <tchar.h>
 
 
 
 // TODO: reference additional headers your program requires here
+#include <iostream>
+#include <algorithm>
+#include <string>
+#include <ctime>
+#include <cstdlib>

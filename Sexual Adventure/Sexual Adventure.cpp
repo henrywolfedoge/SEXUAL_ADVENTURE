@@ -2,12 +2,16 @@
 
 #include "stdafx.h" //see file for other headers
 using namespace std;
-string version = "Version 0.1.6";
+string version = "Version 0.1.6.a";
 string responce = "";
 string static name = "", gender = "", male_female = "", Baby_gender = "";
 string static Achievement1 = "???", Achievement2 = "???", Achievement3 = "???", Achievement4 = "???", Achievement5 = "???", Achievement6 = "???", Achievement7 = "???", Achievement8 = "???", Achievement9 = "???", Achievement10 = "???", Achievement11 = "???", Achievement12 = "???", Achievement13 = "???";
-int static age, Baby_genderCalc;
-bool invalidresponce = 0;
+int static age = 0, Baby_genderCalc;
+bool invalidresponce = 0, pregnant = false, keep = false;
+void responce_() {
+	cin >> responce;
+	transform(responce.begin(), responce.end(), responce.begin(), tolower);
+}
 void save() {
 	ofstream dataFile;  // Declare variable. 
 	dataFile.open("SaveData.txt");  // Open a text file. 
@@ -27,17 +31,20 @@ void load() {
 void pregnacy() {
 	srand(time(0));
 	Baby_genderCalc = 1 + (rand() % 100);
-	if (Baby_genderCalc <= 50) {
-		Achievement12 = "It's a BOY!!";
-		Baby_gender = "boy";
-	}
-	else if (Baby_genderCalc > 50){
-		Achievement13 = "It's a GIRL!!";
-		Baby_gender = "girl";
+	if (pregnant == true && keep == true) {
+		if (Baby_genderCalc <= 50) {
+			Achievement12 = "It's a BOY!!";
+			Baby_gender = "boy";
+		}
+		else if (Baby_genderCalc > 50) {
+			Achievement13 = "It's a GIRL!!";
+			Baby_gender = "girl";
+		}
 	}
 }
 void femalestory() {
-	
+	pregnacy();//works out gender of baby if becoming pregnant and keeping it.
+
 	if (gender == "female"&&age<18) {//Female<18 story
 		system("cls");
 		cout << "He stands up and starts walking towards you." << endl
@@ -56,7 +63,7 @@ void femalestory() {
 		cout << endl << "Do you take up his offer?" << endl << "Yes/No" << endl;
 		do {
 			femaleunder18choice2:
-			cin >> responce;
+			responce_();
 			if (responce == "no" || responce == "yes") {
 				invalidresponce = 1;
 			}
@@ -84,7 +91,7 @@ void femalestory() {
 			cout <<endl << "Do you tell him you're on the pill even though you're not?" << endl << "Yes/No" << endl;
 			do {
 				femaleunder18choice3:
-				cin >> responce;
+				responce_();
 				if (responce == "yes" || responce == "no") {
 					invalidresponce = 1;
 				}
@@ -155,7 +162,7 @@ void storychoice() {
 		cout << endl << "Should you sneak out and fuck this hottie?" << endl << "Yes/No" << endl;
 		do {
 		redochoice1:
-			cin >> responce;
+			responce_();
 			if (responce == "yes" || responce == "no") {
 				invalidresponce = 1;
 			}
@@ -192,13 +199,14 @@ void Start() {
 	madewrongchoice:
 	system("cls");
 	//enter name
-	cout << "Please enter your name" << endl;
+	cout << "Please enter your characters name" << endl;
 	cin >> name;
+	name[0] = toupper(name[0]);
 	//enter gender
-	cout << "Please enter your gender" << endl << "male/female" << endl;
+	cout << "Please enter your characters gender" << endl << "male/female" << endl;
 	do {
 	invalidgender:
-		cin >> responce;
+		responce_();
 		if (responce == "male" || responce == "m" || responce == "female" || responce == "f") {
 			invalidresponce = 1;
 		}
@@ -215,18 +223,24 @@ void Start() {
 	}
 	//enter age
 invalidage:
-	cout << "Please enter your age" << endl;
+	cout << "Please enter your characters age" << endl;
 	cin >> age;
-	if (age < 13 || age >= 50) {
+	while (!(cin >> age)) {
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		cerr << "That's a invalid age, please try again" << endl;
-		goto invalidage;
 	}
+		if (age < 13 || age >= 50) {
+			cerr << "That's a invalid age, please try again" << endl;
+			goto invalidage;
+		}
+	
 	//confim
-	cout << "Your name is " << name << " and you're a " << age << " year old " << gender << endl;
+		cout << "Your charactar is a " << age << " year old " << gender << " named " << name << endl;
 	do {
 		invalidconfirm:
 		cout << "Is the correct?" << endl << "Yes/No" << endl;
-		cin >> responce;
+		responce_();
 		if (responce == "yes" || responce == "Yes" || responce == "No" || responce == "no") {
 			invalidresponce = 1;
 		}
@@ -244,11 +258,12 @@ invalidage:
 	}
 }
 void main_menu() {
-	startscreen:
+startscreen:
+	system("cls");
 	cout << "SEXUAL ADVENTURE" << " " << version << endl << "TYPE START" << endl;
 	do {
 		redostart:
-		cin >> responce;
+		responce_();
 		if (responce == "start") {
 			invalidresponce = 1;
 		}
@@ -265,7 +280,7 @@ menu:
 	cout << "Play" << endl << "Credits" << endl << "Achievements" << endl << "Save" << endl << "Load" << endl << "Help" << endl << "Exit" << endl;
 redoinput:
 	do {
-		cin >> responce;
+		responce_();
 		if (responce == "play" || responce == "credits" || responce == "achievements" || responce == "save" || responce == "load" || responce == "help" || responce == "exit") {
 			invalidresponce = 1;
 		}
@@ -293,7 +308,7 @@ redoinput:
 		system("cls");
 		cout << "Are you sure you want to save?" << endl << "Yes/No" << endl;
 		do {
-			cin >> responce;
+			responce_();
 			if (responce == "yes" || responce == "no") {
 				invalidresponce = 1;
 			}
@@ -326,7 +341,7 @@ redoinput:
 		cout << "Do you close game or go back to start screen?" << endl << "Exit/Start" << endl;
 		do {
 			redoexit:
-			cin >> responce;
+			responce_();
 			if (responce == "exit" || responce == "start") {
 				invalidresponce = 1;
 			}
@@ -350,7 +365,7 @@ redoinput:
 	back:
 	invalidback:
 		cout << endl << "Type \"back\" to go to the main menu" << endl;
-		cin >> responce;
+		responce_();
 		if (responce == "back") {
 			invalidresponce = 1;
 		}
